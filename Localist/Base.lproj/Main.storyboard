@@ -108,11 +108,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Your Lists" id="woE-1C-xdd">
                         <barButtonItem key="backBarButtonItem" title=" The Lists" id="xGX-Kc-3Lo"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="BbZ-Fv-6ej">
-                            <connections>
-                                <action selector="SyncButtonWasPressed:" destination="BYZ-38-t0r" id="7d8-2u-NCe"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Vlb-2o-M93">
                             <connections>
                                 <segue destination="0iw-zx-eYC" kind="presentation" identifier="AddEditListViewController" id="A6R-17-kbV"/>

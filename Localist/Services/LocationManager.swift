@@ -41,6 +41,7 @@ class LocationManager: NSObject {
         }
         
         locationManager.requestWhenInUseAuthorization()
+        print(">>> Requesting location")
         locationManager.requestLocation()
     }
     
@@ -85,6 +86,7 @@ class LocationManager: NSObject {
 
 extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("<<< didUpdateLocation")
         currentLocation = locations.last
         curLoc = locations.last
         ArchiveService.instance.storeLastLocation(location: locations.last!)

@@ -62,6 +62,7 @@ class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func handleLogin() {
         // let data = DataService.instance.getData()
+        print("--- Logged in should sync data immediately")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
