@@ -32,6 +32,7 @@
 		6A9A748A21703E320067CEC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A9A748921703E320067CEC3 /* Assets.xcassets */; };
 		6A9A748D21703E320067CEC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A9A748B21703E320067CEC3 /* LaunchScreen.storyboard */; };
 		6A9E78FB22D1003B003D79D4 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E78FA22D1003B003D79D4 /* SpinnerViewController.swift */; };
+		6AAB5A4522F4D87500AA22BA /* LocalistLocationAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAB5A4422F4D87500AA22BA /* LocalistLocationAlert.swift */; };
 		6AAEA632221E596300B316EA /* SelectableAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAEA631221E596300B316EA /* SelectableAddressTableViewCell.swift */; };
 		6AAEA634221E67D700B316EA /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAEA633221E67D700B316EA /* SearchResultTableViewCell.swift */; };
 		6AB6341B221D266F00670F23 /* AddEditLocationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB63419221D266F00670F23 /* AddEditLocationsTableViewController.swift */; };
@@ -86,6 +87,7 @@
 		6A9A748E21703E320067CEC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A9E78FA22D1003B003D79D4 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		6AA9890D224C92F200CBE611 /* Home.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Home.gpx; sourceTree = "<group>"; };
+		6AAB5A4422F4D87500AA22BA /* LocalistLocationAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalistLocationAlert.swift; sourceTree = "<group>"; };
 		6AAC664622B8206600451B63 /* LocalistMVP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocalistMVP.entitlements; sourceTree = "<group>"; };
 		6AAEA631221E596300B316EA /* SelectableAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableAddressTableViewCell.swift; sourceTree = "<group>"; };
 		6AAEA633221E67D700B316EA /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				6AF1C6C521EEFF39009ECE1D /* Person.swift */,
 				6AF1C6C721EEFFAC009ECE1D /* Retailer.swift */,
 				6AF9346922E29C6F0029CED7 /* DeviceLogMessage.swift */,
+				6AAB5A4422F4D87500AA22BA /* LocalistLocationAlert.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				6AF1C6CE21EF0B87009ECE1D /* AvatarImage.swift in Sources */,
 				6A7C3BC722A7A681002314CF /* Utils.swift in Sources */,
 				6A0B44E522153BB200FAA29D /* LocationManager.swift in Sources */,
+				6AAB5A4522F4D87500AA22BA /* LocalistLocationAlert.swift in Sources */,
 				6A59F4ED2229DDB000ECB98E /* ListLocationsViewController.swift in Sources */,
 				6A11C56C21E7125800A3FCFB /* RoundBadge.swift in Sources */,
 				6AF9346A22E29C6F0029CED7 /* DeviceLogMessage.swift in Sources */,

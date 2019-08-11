@@ -81,3 +81,23 @@ func logError(message: String = "", error: String = "") {
         print("!!! Error encoding deviceLogMessage: \(error)")
     }
 }
+
+func recordLocalistLocationAlert(localistId: Int, action: String = "presented") {
+    
+    // create request
+    let url = URL(string: LOCATION_ALERT_URL)!
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+    // create data
+    let user = DataService.instance.getUser()
+    let userId = (user == nil) ? 0 : user!.id
+    do {
+        let localistLocationAlert = LocalistLocationAlert(userId: userId!, localistId: localistId, action: action)
+        let encodedData = try JSONEncoder().encode(localistLocationAlert)
+        URLSession.shared.uploadTask(with: request, from: encodedData).resume()
+    } catch let error {
+        print("!!! Error recording location alert: \(error)")
+    }
+}

@@ -12,18 +12,15 @@ import os
 
 class ListsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LoginViewControllerDelegate {
     
-    @IBAction func SyncButtonWasPressed(_ sender: Any) {
-        print("Pending Sync: \(ArchiveService.instance.pendingSync != nil)")
-        print("Scheduled Notifications:")
-        NotificationsService.instance.printScheduledNotifications()
-    }
-    
-    
     @IBOutlet weak var listTable: UITableView!
     var loginViewController: LoginViewController!
     
     private(set) var selectedList: List?
     var destinationListId: Int?
+    
+    @IBAction func actionButtonWasPressed(_ sender: Any) {
+        logError(message: "does this work?", error: "{}")
+    }
     
     override func viewDidLoad() {
         

@@ -81,6 +81,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     // MARK: - User Notifications stack
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
     {
+        
+        // Record the notification presentation
+        let category = notification.request.content.categoryIdentifier
+        if (category == NotificationsService.Identifiers.listCategory) {
+            if let listId = notification.request.content.userInfo["list_id"] as? Int {
+                recordLocalistLocationAlert(localistId: listId)
+            }
+        }
+        
         // Go ahead and display the notification
         completionHandler([.alert, .badge, .sound])
         
@@ -103,6 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             // Handle view or ignore actions
             if response.actionIdentifier == NotificationsService.Identifiers.viewAction ||
                 response.actionIdentifier == UNNotificationDefaultActionIdentifier {
+                recordLocalistLocationAlert(localistId: listId, action: "viewed")
                 // Pop to root of navigation
                 if let navigationController = self.window?.rootViewController as? UINavigationController {
                     navigationController.popToRootViewController(animated: false)
