@@ -27,23 +27,28 @@ class ListTableViewCell: UITableViewCell {
     }
     
     func buildRetailerString(list: List) -> String {
-        var retailersString = ""
-        var retailerStrings = Set<String>()
+        
+        // get and sort retailer names
+        var retailerStrings = [String]()
         for retailer in list.retailers {
             if (retailer.locations.count > 0) {
-                retailerStrings.insert(retailer.name)
+                retailerStrings.append(retailer.name)
             }
         }
+        retailerStrings.sort()
+
+        // build final string
+        var retailersString = ""
         switch retailerStrings.count {
         case 0:
             retailersString = "No retailers selected"
         case 1:
-            retailersString = retailerStrings.popFirst()!
+            retailersString = retailerStrings[0]
         case 2:
-            retailersString = "\(retailerStrings.popFirst()!) and \(retailerStrings.popFirst()!)"
+            retailersString = "\(retailerStrings[0]) and \(retailerStrings[1])"
         default:
             let andMoreRetailersCount = retailerStrings.count - 2
-            retailersString = "\(retailerStrings.popFirst()!), \(retailerStrings.popFirst()!), and \(andMoreRetailersCount) more"
+            retailersString = "\(retailerStrings[0]) and \(retailerStrings[1]), and \(andMoreRetailersCount) more"
         }
         return retailersString
     }
