@@ -25,6 +25,10 @@ struct List: Codable {
         self.updated = Date().timeIntervalSince1970
     }
     
+    mutating func editItem(itemIndex: Int, itemText: String) {
+        self.items[itemIndex].updateTitle(title: itemText)
+    }
+    
     mutating func addItem(item: Item) {
         items.append(item)
         self.setUpdated()

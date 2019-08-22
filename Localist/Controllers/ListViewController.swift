@@ -41,6 +41,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         DataService.instance.addItemToList(item: Item(title: "Foot"), listRowIndex: 1)
     }
     @IBAction func removeItemPressed(_ sender: Any) {
+        print("remove item pressed")
         DataService.instance.removeItemFromList(itemIndex: 0, listRowIndex: 1)
     }
     @objc func getDataUpdate() {
@@ -68,10 +69,16 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @objc func handleItemDidFinishEditing() {
         if let itemText = itemField.text {
+            
             // check for input - add item if good input
             if itemText != "" {
-                let newItem = Item(title: itemText)
-                DataService.instance.addItemToList(item: newItem, listRowIndex: selectedRowIndex)
+                if (itemTable.indexPathForSelectedRow != nil) {
+                    let selectedItemIndexPath = itemTable.indexPathForSelectedRow
+                    DataService.instance.editItemInList(itemText: itemText, itemIndex: selectedItemIndexPath!.row, listRowIndex: selectedRowIndex)
+                } else {
+                    let newItem = Item(title: itemText)
+                    DataService.instance.addItemToList(item: newItem, listRowIndex: selectedRowIndex)
+                }
             }
             // clear out itemText
             itemField.text = ""
@@ -85,10 +92,18 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell") as? ItemTableViewCell {
             cell.updateViews(item: items[indexPath.row], itemIndex: indexPath.row)
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             return cell
         } else {
             return ItemTableViewCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // get the item at the index path and populate the itemField
+        let selectedItem = items[indexPath.row]
+        itemField.text = selectedItem.title
+        itemField.becomeFirstResponder()
     }
     
     func initItems(list: List, rowIndex: Int) {

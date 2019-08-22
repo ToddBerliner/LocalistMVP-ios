@@ -13,4 +13,7 @@ struct Item: Codable {
     init(title: String) {
         self.title = title
     }
+    mutating func updateTitle(title: String) {
+        self.title = title
+    }
 }

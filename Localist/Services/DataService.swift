@@ -186,6 +186,19 @@ class DataService {
         return people
     }
     
+    func editItemInList(itemText: String, itemIndex: Int, listRowIndex: Int) {
+        // edit item
+        data!.Lists[listRowIndex].editItem(itemIndex: itemIndex, itemText: itemText)
+        // save locally
+        ArchiveService.instance.archiveData()
+        
+        // update UI
+        updateUI()
+        
+        // sync changes with server
+        ArchiveService.instance.delayedSync() // new item, send to server
+    }
+    
     func addItemToList(item: Item, listRowIndex: Int) {
         // add the item
         data!.Lists[listRowIndex].addItem(item: item)
