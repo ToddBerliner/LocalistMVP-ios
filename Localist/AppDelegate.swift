@@ -156,6 +156,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Set alert to user and ask to try again
         print(">>> Error registering for APNS token")
         print(error)
+        ArchiveService.instance.delayedSync(delay: 0) // send to server anyway
     }
 
     // MARK: - Core Data stack
