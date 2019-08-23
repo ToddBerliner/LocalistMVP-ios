@@ -35,19 +35,19 @@ let locationUpdateNotification = "locationUpdateNotification"
 
 
 // LOCAL
-let SYNC_DATA_URL = "http://localhost:8808/api/syncdata.json"
-let DELETE_LIST_URL = "http://localhost:8808/api/deletelist.json"
-let GET_SERVER_PEOPLE_URL = "http://localhost:8808/api/getserverpeople.json"
-let DEVICE_LOG_URL = "http://localhost:8808/api/logfromdevice.json"
-let LOCATION_ALERT_URL = "http://localhost:8808/api/recordlocalistalert.json"
+//let SYNC_DATA_URL = "http://localhost:8808/api/syncdata.json"
+//let DELETE_LIST_URL = "http://localhost:8808/api/deletelist.json"
+//let GET_SERVER_PEOPLE_URL = "http://localhost:8808/api/getserverpeople.json"
+//let DEVICE_LOG_URL = "http://localhost:8808/api/logfromdevice.json"
+//let LOCATION_ALERT_URL = "http://localhost:8808/api/recordlocalistalert.json"
 
 
 // HOME
-//let SYNC_DATA_URL = "http://10.0.0.79:8808/api/syncdata.json"
-//let DELETE_LIST_URL = "http://10.0.0.79:8808/api/deletelist.json"
-//let GET_SERVER_PEOPLE_URL = "http://10.0.0.79:8808/api/getserverpeople.json"
-//let DEVICE_LOG_URL = "http://10.0.0.79:8808/api/logfromdevice.json"
-//let LOCATION_ALERT_URL = "http://10.0.0.79:8808/api/recordlocalistalert.json"
+let SYNC_DATA_URL = "http://10.0.0.79:8808/api/syncdata.json"
+let DELETE_LIST_URL = "http://10.0.0.79:8808/api/deletelist.json"
+let GET_SERVER_PEOPLE_URL = "http://10.0.0.79:8808/api/getserverpeople.json"
+let DEVICE_LOG_URL = "http://10.0.0.79:8808/api/logfromdevice.json"
+let LOCATION_ALERT_URL = "http://10.0.0.79:8808/api/recordlocalistalert.json"
 
 // OFFICE
 //let SYNC_DATA_URL = "http://10.1.10.79:8808/api/syncdata.json"
