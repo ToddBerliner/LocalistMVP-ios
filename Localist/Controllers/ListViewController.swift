@@ -15,8 +15,10 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var itemField: UITextField!
     
     private(set) public var items = [Item]()
+    private(set) public var markedItems = [Item]()
     // selectedRowIndex is bad news - poor way to find the desired list in the data
     private(set) public var selectedRowIndex: Int = 0
+    private(set) public var showHiddenItems: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +39,6 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                                object: nil)
     }
     
-    @IBAction func addItemPressed(_ sender: Any) {
-        DataService.instance.addItemToList(item: Item(title: "Foot"), listRowIndex: 1)
-    }
-    @IBAction func removeItemPressed(_ sender: Any) {
-        print("remove item pressed")
-        DataService.instance.removeItemFromList(itemIndex: 0, listRowIndex: 1)
-    }
     @objc func getDataUpdate() {
         // update UI on main thread
         DispatchQueue.main.async {
@@ -61,9 +56,15 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func markItemButtonPressed(_ sender: Any) {
+        // TODO: handle sections - translate itemIndex correctly
         if let markButton = (sender as? MarkItemButton) {
-            let itemIndex = markButton.itemIndex
-            DataService.instance.removeItemFromList(itemIndex: itemIndex, listRowIndex: selectedRowIndex)
+            let indexPath = markButton.indexPath
+            let item = getItem(indexPath: indexPath)
+            if item.marked != nil {
+                DataService.instance.restoreItemToList(itemIndex: indexPath.row, listRowIndex: selectedRowIndex)
+            } else {
+                DataService.instance.removeItemFromList(itemIndex: indexPath.row, listRowIndex: selectedRowIndex)
+            }
         }
     }
     
@@ -92,12 +93,37 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        if section == 0 {
+            return items.count
+        } else {
+            return markedItems.count
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // Check mode - showHidden: true || false
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 1 {
+            return "Completed Items"
+        }
+        return nil
+    }
+    
+    func getItem(indexPath: IndexPath) -> Item {
+        if (indexPath.section == 0) {
+            return items[indexPath.row]
+        } else {
+            return markedItems[indexPath.row]
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = getItem(indexPath: indexPath)
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell") as? ItemTableViewCell {
-            cell.updateViews(item: items[indexPath.row], itemIndex: indexPath.row)
+            cell.updateViews(item: item, indexPath: indexPath)
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             return cell
         } else {
@@ -107,14 +133,18 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // get the item at the index path and populate the itemField
+        // TODO: handle sections - translate itemIndex correctly
         let selectedItem = items[indexPath.row]
-        itemField.text = selectedItem.title
-        itemField.becomeFirstResponder()
+        if (selectedItem.marked == nil) {
+            itemField.text = selectedItem.title
+            itemField.becomeFirstResponder()
+        }
     }
     
     func initItems(list: List, rowIndex: Int) {
         let user = DataService.instance.getUser()!
         items = list.items
+        markedItems = list.markedItems
         selectedRowIndex = rowIndex
         navigationItem.title = list.title
         let otherMembers = list.members.filter({member in
@@ -141,5 +171,4 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
             navigationItem.prompt = prompt
         }
     }
-    
 }

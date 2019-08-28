@@ -112,7 +112,7 @@ class ArchiveService {
         // NotificationsService.instance.ensureNotifications()
         self.archiveData()
         
-        print(">>> START SYNC")
+        print(">>> START SYNC - foreground")
         
         // get current data
         let encodedData = DataService.instance.getEncodedData()!
@@ -125,7 +125,10 @@ class ArchiveService {
         let session = URLSession(configuration: sessionConfiguration)
         
         session.uploadTask(with: request, from: encodedData, completionHandler: {(data, _, _) in
-            guard let data = data else { return }
+            guard let data = data else {
+                print("no data in uploadTask!")
+                return
+            }
             do {
                 //Decode retrived data with JSONDecoder and assing type of Article object
                 let serverResponse = try JSONDecoder().decode(DataRootFromServer.self, from: data)
@@ -137,7 +140,8 @@ class ArchiveService {
                 completion(true)
                 self.pendingSync = nil
                 print("<<< DONE SYNC")
-            } catch {
+            } catch let error {
+                print("Error parsing server response: \(error)")
                 completion(false)
             }
         }).resume()
@@ -157,7 +161,7 @@ class ArchiveService {
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             
-            print(">>> START SYNC")
+            print(">>> START SYNC - in background")
             
             URLSession.shared.uploadTask(with: request, from: encodedData, completionHandler: {(data, response, error) in
                 

@@ -212,6 +212,13 @@ class DataService {
         ArchiveService.instance.delayedSync() // new item, send to server
     }
     
+    func restoreItemToList(itemIndex: Int, listRowIndex: Int) {
+        data!.Lists[listRowIndex].restoreItem(itemIndex: itemIndex)
+        ArchiveService.instance.archiveData()
+        updateUI()
+        ArchiveService.instance.delayedSync()
+    }
+    
     func removeItemFromList(itemIndex: Int, listRowIndex: Int) {
         // remove (mark) the item
         data!.Lists[listRowIndex].removeItem(itemIndex: itemIndex)

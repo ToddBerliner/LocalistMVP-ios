@@ -381,12 +381,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEN-Lu-4Mq" customClass="MarkItemButton" customModule="LocalistMVP" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEN-Lu-4Mq" customClass="MarkItemButton" customModule="LocalistMVP" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="7.5" width="35" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="35" id="4tw-Ij-XAe"/>
                                                         <constraint firstAttribute="height" constant="35" id="EXk-lu-AI7"/>
                                                     </constraints>
+                                                    <state key="normal" image="Task"/>
                                                     <connections>
                                                         <action selector="markItemButtonPressed:" destination="73w-Zp-F27" eventType="touchUpInside" id="FIE-Qe-Heq"/>
                                                     </connections>
@@ -747,4 +748,7 @@
             <point key="canvasLocation" x="2608.8000000000002" y="-724.13793103448279"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Task" width="27" height="27"/>
+    </resources>
 </document>

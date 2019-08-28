@@ -10,10 +10,19 @@ import Foundation
 
 struct Item: Codable {
     var title: String
+    var marked: Double?
     init(title: String) {
         self.title = title
+        self.marked = nil
     }
     mutating func updateTitle(title: String) {
         self.title = title
+    }
+    mutating func setMarked(marked: Bool) {
+        if (marked) {
+            self.marked = Date().timeIntervalSince1970
+        } else {
+            self.marked = nil
+        }
     }
 }

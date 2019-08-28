@@ -216,7 +216,7 @@ class AddEditListViewController: UIViewController, UITextFieldDelegate, ListLoca
                 return
             }
             
-            let newList = List(title: listNameField.text!, items: [], retailers: retailers, members: listPeopleViewController.members)
+            let newList = List(title: listNameField.text!, items: [], markedItems: [], retailers: retailers, members: listPeopleViewController.members)
             DataService.instance.addList(list: newList)
         } else {
             // Editing an existing list
