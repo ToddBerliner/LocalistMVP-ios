@@ -19,6 +19,7 @@
 		6A66D90A228E0CD000902936 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A66D909228E0CD000902936 /* LoginViewController.swift */; };
 		6A6A410D21E09085006A0124 /* AddEditListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A410C21E09085006A0124 /* AddEditListViewController.swift */; };
 		6A6A410F21E09092006A0124 /* AddEditPeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A410E21E09092006A0124 /* AddEditPeopleViewController.swift */; };
+		6A73EC60231A2C0B004E06C4 /* ListTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A73EC5F231A2C0B004E06C4 /* ListTableViewHeaderView.swift */; };
 		6A7C3BC722A7A681002314CF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7C3BC622A7A681002314CF /* Utils.swift */; };
 		6A86F829227DF8F5005C41AD /* ContactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A86F828227DF8F5005C41AD /* ContactsService.swift */; };
 		6A8B1D5A2182E21D00989730 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B1D592182E21D00989730 /* Item.swift */; };
@@ -71,6 +72,7 @@
 		6A66D909228E0CD000902936 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6A6A410C21E09085006A0124 /* AddEditListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditListViewController.swift; sourceTree = "<group>"; };
 		6A6A410E21E09092006A0124 /* AddEditPeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditPeopleViewController.swift; sourceTree = "<group>"; };
+		6A73EC5F231A2C0B004E06C4 /* ListTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewHeaderView.swift; sourceTree = "<group>"; };
 		6A7C3BC622A7A681002314CF /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		6A86F828227DF8F5005C41AD /* ContactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsService.swift; sourceTree = "<group>"; };
 		6A8B1D592182E21D00989730 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				6AFBD55A21F2FCC200D9F0A8 /* SelectablePersonTableViewCell.swift */,
 				6AAEA631221E596300B316EA /* SelectableAddressTableViewCell.swift */,
 				6A9E78FA22D1003B003D79D4 /* SpinnerViewController.swift */,
+				6A73EC5F231A2C0B004E06C4 /* ListTableViewHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				6A11C56C21E7125800A3FCFB /* RoundBadge.swift in Sources */,
 				6AF9346A22E29C6F0029CED7 /* DeviceLogMessage.swift in Sources */,
 				6AF1C6CA21EF002E009ECE1D /* PersonTableViewCell.swift in Sources */,
+				6A73EC60231A2C0B004E06C4 /* ListTableViewHeaderView.swift in Sources */,
 				6ABE09D12227A950000E4EF5 /* RetailerTableViewCell.swift in Sources */,
 				6A9A748021703E320067CEC3 /* AppDelegate.swift in Sources */,
 				6AFD844D218CD862006311A4 /* NotificationsService.swift in Sources */,

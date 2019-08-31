@@ -18,7 +18,7 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private(set) public var markedItems = [Item]()
     // selectedRowIndex is bad news - poor way to find the desired list in the data
     private(set) public var selectedRowIndex: Int = 0
-    private(set) public var showHiddenItems: Bool = false
+    private(set) public var showHiddenItems: Bool = UserDefaults.standard.bool(forKey: SHOW_MARKED_ITEMS)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +32,8 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         addBtn.addTarget(self, action: #selector(ListViewController.handleItemDidFinishEditing), for: .touchUpInside)
         
         itemField.inputAccessoryView = addBtn
+        
+        itemTable.register(ListTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: ListTableViewHeaderView.reuseIdentifier)
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(getDataUpdate),
@@ -53,6 +55,12 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         textField.resignFirstResponder()
         handleItemDidFinishEditing()
         return true
+    }
+    
+    @objc func toggleHiddenItems() {
+        self.showHiddenItems = !self.showHiddenItems
+        UserDefaults.standard.set(self.showHiddenItems, forKey: SHOW_MARKED_ITEMS)
+        itemTable.reloadData()
     }
     
     @IBAction func markItemButtonPressed(_ sender: Any) {
@@ -102,14 +110,27 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func numberOfSections(in tableView: UITableView) -> Int {
         // Check mode - showHidden: true || false
-        return 2
+        return self.showHiddenItems ? 2 : 1
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 1 {
-            return "Completed Items"
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == 0 {
+            guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ListTableViewHeaderView.reuseIdentifier) as? ListTableViewHeaderView
+                else {
+                    return nil
+            }
+            let buttonTitle = self.showHiddenItems ? "Hide" : "Show"
+            view.showHideButton.setTitle("\(buttonTitle) Completed Items", for: .normal)
+            view.showHideButton.setTitleColor(#colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1), for: .normal)
+            view.showHideButton.addTarget(self, action: #selector(ListViewController.toggleHiddenItems), for: .touchUpInside)
+            return view
+        } else {
+            return nil
         }
-        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return section == 0 ? 40 : 0
     }
     
     func getItem(indexPath: IndexPath) -> Item {

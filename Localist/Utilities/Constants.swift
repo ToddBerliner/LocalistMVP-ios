@@ -26,6 +26,7 @@ let dataModelDidUpdateNotification = "dataModelDidUpdateNotification"
 let locationUpdateNotification = "locationUpdateNotification"
 
 // Strings
+let SHOW_MARKED_ITEMS = "showmarkeditems"
 
 //let SYNC_DATA_URL = "http://172.19.130.53:8808/api/syncdata.json"
 //let DELETE_LIST_URL = "http://172.19.130.53:8808/api/deletelist.json"
